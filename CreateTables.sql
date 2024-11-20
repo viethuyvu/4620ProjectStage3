@@ -12,8 +12,9 @@ CREATE TABLE Customer (
 
 CREATE TABLE Pizza_Order(
 	ID INT PRIMARY KEY,
-	Order_Time DATETIME NOT NULL,
+	Order_Time TIMESTAMP NOT NULL,
 	Order_status VARCHAR(20) NOT NULL,
+  Customer_ID INT NOT NULL,
 	FOREIGN KEY (Customer_ID) REFERENCES Customer(ID)
 );
 
@@ -21,6 +22,8 @@ CREATE TABLE Pizza (
 	ID INT PRIMARY KEY,
 	Price DECIMAL(10,2) NOT NULL,
 	Cost DECIMAL(10,2) NOT NULL,
+  Order_ID INT NOT NULL,
+  Base_Price_ID INT NOT NULL,
 	FOREIGN KEY (Order_ID) REFERENCES Pizza_Order(ID),
 	FOREIGN KEY (Base_Price_ID) REFERENCES Base_Price (ID)
 );
@@ -39,9 +42,9 @@ CREATE TABLE Topping (
 
 CREATE TABLE Discount (
 	ID INT PRIMARY KEY,
-	Discount_Name VARCHAR(50) NOT NULL
+	Discount_Name VARCHAR(50) NOT NULL,
 	Percent_Off DECIMAL(5,2),
-	Dollar_Off DECIMAL(10,2),
+	Dollar_Off DECIMAL(10,2)
 );
 
 CREATE TABLE Applied_to_Order (
