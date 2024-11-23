@@ -1,3 +1,38 @@
+CREATE TABLE Customer (
+	ID INT PRIMARY KEY
+);
+
+CREATE TABLE Dine_In_Customer (
+	Customer_ID INT NOT NULL,
+	Table_Num INT NOT NULL,
+	FOREIGN KEY (Customer_ID) REFERENCES Customer(ID)
+);
+
+CREATE TABLE Dine_Out_Customer (
+	Customer_ID INT NOT NULL,
+	Customer_FName VARCHAR(50) NOT NULL,
+	Customer_LName VARCHAR(50) NOT NULL,
+	Phone_Num VARCHAR(20) NOT NULL,
+	FOREIGN KEY (Customer_ID) REFERENCES Customer(ID)
+);
+
+CREATE TABLE Delivery_Customer (
+	DineOut_ID INT NOT NULL,
+	Addr_Line1 VARCHAR(100) NOT NULL,
+	Addr_Line2 VARCHAR(100),
+	Addr_City VARCHAR(50) NOT NULL,
+	Addr_State VARCHAR(2) NOT NULL,
+	Addr_Zip VARCHAR(10) NOT NULL,
+	FOREIGN KEY (DineOut_ID) REFERENCES Dine_Out_Customer(Customer_ID)
+);
+
+CREATE TABLE Seats(
+	DineIn_ID INT NOT NULL,
+	Seat_number INT,
+	PRIMARY KEY (DineIn_ID, Seat_number),
+	FOREIGN KEY (DineIn_ID) REFERENCES Dine_Out_Customer(Customer_ID)
+);
+
 CREATE TABLE Base_Price (
 	ID INT PRIMARY KEY ,
 	PSize VARCHAR(20) NOT NULL,
@@ -6,15 +41,11 @@ CREATE TABLE Base_Price (
 	Cost DECIMAL(10,2) NOT NULL
 );
 
-CREATE TABLE Customer (
-	ID INT PRIMARY KEY
-);
-
 CREATE TABLE Pizza_Order(
 	ID INT PRIMARY KEY,
 	Order_Time TIMESTAMP NOT NULL,
 	Order_status VARCHAR(20) NOT NULL,
-  Customer_ID INT NOT NULL,
+	Customer_ID INT NOT NULL,
 	FOREIGN KEY (Customer_ID) REFERENCES Customer(ID)
 );
 
@@ -22,8 +53,8 @@ CREATE TABLE Pizza (
 	ID INT PRIMARY KEY,
 	Price DECIMAL(10,2) NOT NULL,
 	Cost DECIMAL(10,2) NOT NULL,
-  Order_ID INT NOT NULL,
-  Base_Price_ID INT NOT NULL,
+	Order_ID INT NOT NULL,
+	Base_Price_ID INT NOT NULL,
 	FOREIGN KEY (Order_ID) REFERENCES Pizza_Order(ID),
 	FOREIGN KEY (Base_Price_ID) REFERENCES Base_Price (ID)
 );
@@ -38,6 +69,15 @@ CREATE TABLE Topping (
 	M_Qty DECIMAL(10,2) NOT NULL,
 	L_Qty DECIMAL(10,2) NOT NULL,
 	X_Qty DECIMAL(10,2) NOT NULL
+);
+
+CREATE TABLE Has_Topping(
+	Extra BOOLEAN NOT NULL,
+    Pizza_ID INT NOT NULL,
+    Topping_ID INT NOT NULL,
+    PRIMARY KEY (Pizza_ID, Topping_ID),
+	FOREIGN KEY (Pizza_ID) REFERENCES Pizza(ID),
+	FOREIGN KEY (Topping_ID) REFERENCES Topping(ID)
 );
 
 CREATE TABLE Discount (
@@ -62,38 +102,3 @@ CREATE TABLE Applied_to_Pizza (
 	FOREIGN KEY (Pizza_ID) REFERENCES Pizza(ID),
 	FOREIGN KEY (Discount_ID) REFERENCES Discount(ID)
 );
-
-CREATE TABLE Dine_In_Customer (
-	Table_Num INT NOT NULL,
-	Seat_Num INT NOT NULL,
-	Customer_ID INT NOT NULL,
-	FOREIGN KEY (Customer_ID) REFERENCES Customer(ID)
-);
-
-CREATE TABLE Dine_Out_Customer (
-	ID INT PRIMARY KEY,
-	Customer_Name VARCHAR(50) NOT NULL,
-	Phone_Num VARCHAR(20) NOT NULL,
-	Customer_ID INT NOT NULL,
-	FOREIGN KEY (Customer_ID) REFERENCES Customer(ID)
-);
-
-CREATE TABLE Delivery_Customer (
-	Addr_Street VARCHAR(100) NOT NULL,
-	Addr_City VARCHAR(50) NOT NULL,
-	Addr_State VARCHAR(2) NOT NULL,
-	Addr_Zip VARCHAR(10) NOT NULL,
-	Addr_Apt VARCHAR(10) NOT NULL,
-	DineOut_ID INT NOT NULL,
-	FOREIGN KEY (DineOut_ID) REFERENCES Dine_Out_Customer(ID)
-);
-
-CREATE TABLE Has_Topping(
-	Extra BOOLEAN NOT NULL,
-    Pizza_ID INT NOT NULL,
-    Topping_ID INT NOT NULL,
-    PRIMARY KEY (Pizza_ID, Topping_ID),
-	FOREIGN KEY (Pizza_ID) REFERENCES Pizza(ID),
-	FOREIGN KEY (Topping_ID) REFERENCES Topping(ID)
-);
-    
