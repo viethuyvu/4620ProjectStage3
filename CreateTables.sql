@@ -3,13 +3,13 @@ CREATE TABLE Customer (
 );
 
 CREATE TABLE Dine_In_Customer (
-	Customer_ID INT NOT NULL,
+	Customer_ID INT NOT NULL PRIMARY KEY,
 	Table_Num INT NOT NULL,
 	FOREIGN KEY (Customer_ID) REFERENCES Customer(ID)
 );
 
 CREATE TABLE Dine_Out_Customer (
-	Customer_ID INT NOT NULL,
+    Customer_ID INT NOT NULL PRIMARY KEY,
 	Customer_FName VARCHAR(50) NOT NULL,
 	Customer_LName VARCHAR(50) NOT NULL,
 	Phone_Num VARCHAR(20) NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE Seats(
 	DineIn_ID INT NOT NULL,
 	Seat_number INT,
 	PRIMARY KEY (DineIn_ID, Seat_number),
-	FOREIGN KEY (DineIn_ID) REFERENCES Dine_Out_Customer(Customer_ID)
+	FOREIGN KEY (DineIn_ID) REFERENCES Dine_In_Customer(Customer_ID)
 );
 
 CREATE TABLE Base_Price (

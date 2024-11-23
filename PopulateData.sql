@@ -156,7 +156,7 @@ INSERT INTO Has_Topping VALUES (FALSE,'13','7'); -- roma tomatoes
 INSERT INTO Has_Topping VALUES (FALSE,'13','8'); -- mushroom
 INSERT INTO Has_Topping VALUES (FALSE,'13','9'); -- black olives
 INSERT INTO Has_Topping VALUES (FALSE,'13','16'); -- goat Cheese
-INSERT INTO Applied_to_Pizza VALUES ('11','4'); -- specialty pizza discount
+INSERT INTO Applied_to_Pizza VALUES ('13','4'); -- specialty pizza discount
 -- pizzacount = 13
 
 -- This is order 7, customer 6
