@@ -1,0 +1,13 @@
+DROP TABLE Customer;
+DROP TABLE Dine_In_Customer;
+DROP TABLE Dine_Out_Customer;
+DROP TABLE Delivery_Customer;
+DROP TABLE Seats;
+DROP TABLE Base_Price;
+DROP TABLE Pizza_Order;
+DROP TABLE Pizza;
+DROP TABLE Topping;
+DROP TABLE Has_Topping;
+DROP TABLE Discount;
+DROP TABLE Applied_to_Order;
+DROP TABLE Applied_to_Pizza;
