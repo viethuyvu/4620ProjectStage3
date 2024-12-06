@@ -1,0 +1,114 @@
+   topping_name    | inventory | x_large_pizzas_that_can_be_made 
+-------------------+-----------+---------------------------------
+ Bacon             |        89 |                           29.67
+ Banana Peppers    |        36 |                           20.57
+ Black Olives      |        39 |                           19.50
+ Chicken           |        56 |                           18.67
+ Feta Cheese       |        75 |                           13.64
+ Four Cheese Blend |       150 |                           21.43
+ Goat Cheese       |        54 |                            9.82
+ Green Pepper      |        79 |                           31.60
+ Ham               |        78 |                           19.50
+ Jalapenos         |        64 |                           36.57
+ Mushrooms         |        52 |                           17.33
+ Onion             |        85 |                           30.91
+ Pepperoni         |       100 |                           22.22
+ Pineapple         |        15 |                            7.50
+ Regular Cheese    |       250 |                           35.71
+ Roma tomato       |        86 |                           19.11
+ Sausage           |       100 |                           23.53
+(17 rows)
+
+ order_date | total_revenue | total_expenses | total_profit 
+------------+---------------+----------------+--------------
+ 2024-03-02 |         30.10 |          11.05 |        19.05
+ 2024-03-03 |         81.85 |          24.43 |        57.42
+ 2024-03-05 |         59.00 |          20.54 |        38.46
+ 2024-03-06 |         24.00 |           6.30 |        17.70
+(4 rows)
+
+    customer_name    | total_orders | avg_order_price | total_order_price | max_order_price | min_order_price 
+---------------------+--------------+-----------------+-------------------+-----------------+-----------------
+ Frank Turner        |            1 |           13.25 |             13.25 |           13.25 |           13.25
+ Matt Engers         |            1 |           16.85 |             16.85 |           16.85 |           16.85
+ Milo Auckerman      |            2 |           12.00 |             24.00 |           12.00 |           12.00
+ Andrew Wilkes-Krier |            9 |           12.22 |            110.00 |           17.00 |           10.75
+(4 rows)
+
+ avg_seats_per_order | avg_order_price | total_order_price | max_order_price | min_order_price 
+---------------------+-----------------+-------------------+-----------------+-----------------
+                   1 |           10.60 |             10.60 |           10.60 |           10.60
+                   2 |            6.75 |              6.75 |            6.75 |            6.75
+                   2 |           13.50 |             40.50 |           13.50 |           13.50
+(3 rows)
+
+ pizza_size | crust_type |   topping_name    | extra 
+------------+------------+-------------------+-------
+ X-Large    | Original   | Sausage           | f
+ X-Large    | Original   | Pepperoni         | f
+ X-Large    | Original   | Regular Cheese    | f
+ X-Large    | Original   | Four Cheese Blend | f
+ X-Large    | Original   | Feta Cheese       | f
+ X-Large    | Original   | Goat Cheese       | f
+ X-Large    | Original   | Ham               | t
+ X-Large    | Original   | Pineapple         | t
+ X-Large    | Original   | Regular Cheese    | f
+ X-Large    | Original   | Four Cheese Blend | f
+ X-Large    | Original   | Feta Cheese       | f
+ X-Large    | Original   | Goat Cheese       | f
+ X-Large    | Original   | Bacon             | f
+ X-Large    | Original   | Jalapenos         | f
+ X-Large    | Original   | Regular Cheese    | f
+ X-Large    | Original   | Four Cheese Blend | f
+ X-Large    | Original   | Feta Cheese       | f
+ X-Large    | Original   | Goat Cheese       | f
+(18 rows)
+
+ order_date | order_type | total_orders | total_pizzas | total_order_price 
+------------+------------+--------------+--------------+-------------------
+ 2024-03-02 | Delivery   |            1 |            1 |             13.25
+ 2024-03-02 | Pick-Up    |            1 |            1 |             16.85
+ 2024-03-03 | Delivery   |            6 |            6 |             64.50
+ 2024-03-03 | Dine-In    |            2 |            2 |             17.35
+ 2024-03-05 | Delivery   |            3 |            3 |             45.50
+ 2024-03-05 | Dine-In    |            1 |            1 |             13.50
+ 2024-03-06 | Delivery   |            2 |            2 |             24.00
+(7 rows)
+
+    discount_name     | discount_count | total_money_saved 
+----------------------+----------------+-------------------
+ Lunch Special Medium |              1 |              1.00
+ Specialty Pizza      |              0 |              0.00
+ Employee             |              2 |              3.60
+ Gameday special      |              3 |              9.10
+ Lunch Special Large  |              1 |              2.00
+(5 rows)
+
+  topping_name  | total_amount_used 
+----------------+-------------------
+ Banana Peppers |                 0
+ Black Olives   |                 0
+ Chicken        |                 0
+ Feta Cheese    |                 0
+ Mushrooms      |                 0
+ Pepperoni      |                 0
+ Regular Cheese |                 0
+ Roma tomato    |                 0
+(8 rows)
+
+ pizza_size | total_pizzas_ordered | avg_pizza_price | avg_pizza_cost 
+------------+----------------------+-----------------+----------------
+ Medium     |                    1 |           10.60 |           3.23
+ Large      |                   10 |           11.53 |           3.30
+ X-Large    |                    4 |           15.59 |           6.18
+ Small      |                    1 |            6.75 |           1.40
+(4 rows)
+
+ crust_type  | total_pizzas_ordered | avg_pizza_price | avg_pizza_cost 
+-------------+----------------------+-----------------+----------------
+ Thin        |                    4 |           12.69 |           3.30
+ Pan         |                    1 |           10.60 |           3.23
+ Gluten-Free |                    1 |           16.85 |           7.85
+ Original    |                   10 |           11.68 |           3.81
+(4 rows)
+
